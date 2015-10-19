@@ -1,4 +1,4 @@
-When a component is invoked, a number of life-cycle hooks are triggered in sequence to properly initialize and render the component object and its corresponding DOM element.  The following hooks are a few of the most useful, for current apps.
+When a component is invoked, a number of life-cycle hooks are triggered, in sequence, to properly initialize and render the component object and its corresponding DOM element.  The following hooks are a few of the most useful, for current apps.
 
 ## init()
 
