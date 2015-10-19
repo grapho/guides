@@ -131,6 +131,8 @@ override the `init()` method, make sure you call `this._super(...arguments)`!
 If you don't, a parent class may not have an opportunity to do important
 setup work, and you'll see strange behavior in your application.
 
+_Note: Arrays and objects defined directly on any Ember.Object are shared across all instances of that object. It is encouraged to initialize arrays and object properties during init() if they are meant to be unique to each instance._
+
 ### Accessing Object Properties
 
 When accessing the properties of an object, use the [`get()`][1]
