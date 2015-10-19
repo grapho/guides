@@ -23,7 +23,7 @@ It is at this point in the component life-cycle, when `this.$()` will become ava
 
 Event listeners, jquery manipulation, and 3rd party plugin initializers can be bound to the component, by overriding this method with `_super()`.
 
-#Important:# Setting component properties with `set()` during `didInsertElement()` has historically led to poor rendering performance and has been deprecated, in recent versions of Ember.
+*Important:* Setting component properties with `set()` during `didInsertElement()` has historically led to poor rendering performance and has been deprecated, in recent versions of Ember.
 
 ```
 didInsertElement() {
