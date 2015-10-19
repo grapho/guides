@@ -1,20 +1,5 @@
 When a component is invoked, a number of life-cycle hooks are triggered, in sequence, to properly initialize and render the component object and its corresponding DOM element.  The following hooks are a few of the most useful, for current apps.
 
-## init()
-
-This hook is called when the component object is first initialized.  Among it's primary function is the generation of a unique ID for the DOM element that is not yet inserted.
-
-This method can be overwitten by calling `_super()` and is the proper place for initializing component properties, and running any additional setup functions that do not depend on any rendered DOM.
-
-```components/my-component.js
-init() {
-  this._super(...arguments);
-  this.set('myFoo', []);
-  this.mySetup();
-}
-```
-_Note: Arrays and objects defined directly on a component object are shared across all instances of that component.  It is encouraged to initialize arrays and object properties during `init()` if they are meant to be unique to each instance._
-
 ## didInsertElement()
 
 This method is triggered when the component's main element has been inserted into the DOM. It is only triggered once when the component if first invoked. In the case of a parent component rendering child components, the parent will wait until the child components bubble up their `didInsertElement()` events before trggering it's own.  This way you can always be certain of when all of the DOM becomes available.
