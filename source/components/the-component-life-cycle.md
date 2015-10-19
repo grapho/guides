@@ -6,7 +6,7 @@ This hook is called when the component object is first initialized.  Among it's 
 
 This method can be overwitten by calling `_super()` and is the proper place for initializing component properties, and running any additional setup functions that do not depend on any rendered DOM.
 
-```
+```components/my-component.js
 init() {
   this._super(...arguments);
   this.set('myFoo', []);
@@ -24,7 +24,7 @@ It is at this point in the component life-cycle, when `this.$()` will become ava
 Event listeners, jquery manipulation, and 3rd party plugin initializers can be bound to the component, by overriding this method with `_super()`.
 
 
-```
+```components/my-component.js
 didInsertElement() {
   this._super(...arguments);
   this.$().css('width', 150);
@@ -39,7 +39,7 @@ _Note: While `didInsertElement()` is technically an event that can be listened f
 
 When a component detects that it is time to remove itself from the DOM, `willDestroyElement` will trigger, allowing for any teardown logic to be performed.  This can be triggered by number of conditions, for instance; a wrapping `{{if` block closing `{{#if}}{{my-component}}{{/if}}`; or a parent template being torn down in response to a route transition.
 
-```
+```components/my-component.js
 willDestroyElement() {
   this.$().off('my-custom-event');
   this.$().myDatepickerLib().destroy();
