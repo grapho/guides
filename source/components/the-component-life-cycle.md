@@ -34,7 +34,7 @@ _Note: While `didInsertElement()` is technically an event that can be listened f
 
 ## willDestroyElement()
 
-When a component detects that it is time to remove itself from the DOM, `willDestroyElement` will trigger, allowing for any teardown logic to be performed.  This can be triggered by number of conditions, for instance; a wrapping if block closing `{{#if}}{{my-component}}{{/if}}`; or a parent template being torn down in response to a route transition.
+When a component detects that it is time to remove itself from the DOM, `willDestroyElement` will trigger, allowing for any teardown logic to be performed.  This can be triggered by number of conditions, for instance; a wrapping `{{if` block closing `{{#if}}{{my-component}}{{/if}}`; or a parent template being torn down in response to a route transition.
 
 ```
 willDestroyElement() {
