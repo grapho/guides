@@ -19,7 +19,7 @@ _Note: Arrays and objects defined directly on a component object are shared acro
 
 This method is triggered when the component's main element has been inserted into the DOM. It is only triggered once when the component if first invoked. In the case of a parent component rendering child components, the parent will wait until the child components bubble up their `didInsertElement()` events before trggering it's own.  This way you can always be certain of when all of the DOM becomes available.
 
-It is at this point in the component life-cycle, when `this.$()` will become available to target with jquery.
+It is at this point in the component life-cycle, when `this.$()` will become available to target with jquery. `this.$()` will, by default, return the component's main element wrapper, but it is also valid to target child elements at this point:  `this.$('.some-css-selector')`.
 
 Event listeners, jquery manipulation, and 3rd party plugin initializers can be bound to the component, by overriding this method with `_super()`.
 
