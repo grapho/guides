@@ -53,8 +53,8 @@ addressed. If you don't find an active issue, open a new one.
 
 If you have any styling questions, or about the contributing process you
 can check out our [contributing guide][gh-guides-contributing]. If your
-question persists, reach us at `#documentation` on the Slack
-group.
+question persists, reach us at `#documentation` on the [Slack
+group][slackin].
 
 Good luck!
 
@@ -67,3 +67,5 @@ Good luck!
 [gh-guides]: https://github.com/emberjs/guides/
 [gh-guides-issues]: https://github.com/emberjs/guides/issues
 [gh-guides-contributing]: https://github.com/emberjs/guides/blob/master/CONTRIBUTING.md
+
+[slackin]: https://ember-community-slackin.herokuapp.com/
