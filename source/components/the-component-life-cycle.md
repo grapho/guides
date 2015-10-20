@@ -8,7 +8,7 @@ Suppose you want to integrate your favorite datepicker library into an Ember pro
 
 When a component successfully renders its backing DOM element into the DOM, it will trigger it's `didInsertElement()` hook.  It is at this point in the component life-cycle, when `this.$()` will become available to target with jquery. `this.$()` will, by default, return the component's main element, but it is also valid to target child elements withing the component's template as well: `this.$('.some-css-selector')`.
 
-So let's initialize our datepicker by overriding this method with `_super()`.  The date pickers usually attach to an `<input>` so we will find an input within out component's template.
+So let's initialize our datepicker by overriding this method with `_super()`.  The date pickers usually attach to an `<input>` so we will find an input within our component's template.
 
 ```components/my-component.js
 didInsertElement() {
@@ -37,11 +37,13 @@ There are a few things to note about the `didInsertElement()` hook:
 
 ## willDestroyElement()
 
-When a component detects that it is time to remove itself from the DOM, `willDestroyElement` will trigger, allowing for any teardown logic to be performed.  This can be triggered by number of conditions, for instance; a wrapping `{{if` block closing `{{#if}}{{my-component}}{{/if}}`; or a parent template being torn down in response to a route transition.
+When a component detects that it is time to remove itself from the DOM, `willDestroyElement` will trigger, allowing for any teardown logic to be performed.  This can be triggered by number of conditions, for instance; a wrapping `{{if` block closing `{{#if falseBool}}{{my-component}}{{/if}}`; or a parent template being torn down in response to a route transition.
+
+Let's use that hook to cleanup our date picker and event listener from above:
 
 ```components/my-component.js
 willDestroyElement() {
-  this.$().off('my-custom-event');
+  this.$().off('animationend');
   this.$().myDatepickerLib().destroy();
 }
 ```
