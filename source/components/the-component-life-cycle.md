@@ -2,7 +2,7 @@ What makes a component such a useful tool is that it is closely tied to your app
 
 Though to get the most use out of a component it is important to understand it's "life-cycle" methods. The following hooks are a few of the most useful and commonly used, for current apps.
 
-## didInsertElement()
+## Binding to the Component Element
 
 Suppose you want to integrate your favorite datepicker library into an Ember project.  Where is the best place to initialize the library?  Typically, 3rd party JS/Jquery libraries require a DOM element to bind itself to.
 
@@ -35,7 +35,7 @@ There are a few things to note about the `didInsertElement()` hook:
 - Setting component properties with `set()` during `didInsertElement()` has historically led to poor rendering performance and has been deprecated in recent versions of Ember.
 - While `didInsertElement()` is technically an event that can be listened for using `on('didInsertElement')`, it is strongly encouraged to override the default method itself, particularly when order of execution is important.
 
-## willDestroyElement()
+## Clean-up and Teardown of Component Elements
 
 When a component detects that it is time to remove itself from the DOM, `willDestroyElement` will trigger, allowing for any teardown logic to be performed.  This can be triggered by number of conditions, for instance; a wrapping `{{if` block closing `{{#if falseBool}}{{my-component}}{{/if}}`; or a parent template being torn down in response to a route transition.
 
