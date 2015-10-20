@@ -4,7 +4,7 @@ Though to get the most use out of a component it is important to understand it's
 
 ## Binding to the Component Element
 
-Suppose you want to integrate your favorite datepicker library into an Ember project.  Where is the best place to initialize the library?  Typically, 3rd party JS/Jquery libraries require a DOM element to bind itself to.
+Suppose you want to integrate your favorite datepicker library into an Ember project. Typically, 3rd party JS/Jquery libraries require a DOM element to bind itself to. So, where is the best place to initialize the library?
 
 When a component successfully renders its backing DOM element into the DOM, it will trigger it's `didInsertElement()` hook.  It is at this point in the component life-cycle, when `this.$()` will become available to target with jquery. `this.$()` will, by default, return the component's main element, but it is also valid to target child elements withing the component's template as well: `this.$('.some-css-selector')`.
 
