@@ -1,24 +1,39 @@
-When a component is invoked, a number of life-cycle hooks are triggered, in sequence, to properly initialize and render the component object and its corresponding DOM element.  The following hooks are a few of the most useful, for current apps.
+What makes a component such a useful tool is that it is closely tied to your app's templates and the DOM itself.  Components are the primary object to use for direct DOM manipulation, listening and responding to browser events, and binding 3rd party JS libraries into your Ember app.
+
+Though to get the most use out of a component it is important to understand it's "life-cycle" methods. The following hooks are a few of the most useful and commonly used, for current apps.
 
 ## didInsertElement()
 
-This method is triggered when the component's main element has been inserted into the DOM. It is only triggered once when the component if first invoked. In the case of a parent component rendering child components, the parent will wait until the child components bubble up their `didInsertElement()` events before trggering it's own.  This way you can always be certain of when all of the DOM becomes available.
+Suppose you want to integrate your favorite datepicker library into an Ember project.  Where is the best place to initialize the library?  Typically, 3rd party JS/Jquery libraries require a DOM element to bind itself to.
 
-It is at this point in the component life-cycle, when `this.$()` will become available to target with jquery. `this.$()` will, by default, return the component's main element wrapper, but it is also valid to target child elements at this point:  `this.$('.some-css-selector')`.
+When a component successfully renders its backing DOM element into the DOM, it will trigger it's `didInsertElement()` hook.  It is at this point in the component life-cycle, when `this.$()` will become available to target with jquery. `this.$()` will, by default, return the component's main element, but it is also valid to target child elements withing the component's template as well: `this.$('.some-css-selector')`.
 
-Event listeners, jquery manipulation, and 3rd party plugin initializers can be bound to the component, by overriding this method with `_super()`.
-
+So let's initialize our datepicker by overriding this method with `_super()`.  The date pickers usually attach to an `<input>` so we will find an input within out component's template.
 
 ```components/my-component.js
 didInsertElement() {
   this._super(...arguments);
-  this.$().css('width', 150);
-  this.$().myDatepickerLib();
+  this.$('input').myDatepickerLib();
 }
 ```
-**Important:** Setting component properties with `set()` during `didInsertElement()` has historically led to poor rendering performance and has been deprecated, in recent versions of Ember.
 
-_Note: While `didInsertElement()` is technically an event that can be listened for using `on('didInsertElement')`, it is strongly recommended to override the default method itself, particularly when order of execution is important._
+`didInsertElement()` is also a place to bind event listeners.  this is particialrly useful for custom events or other browser events which do not have a built-in [event handler](http://guides.emberjs.com/v2.1.0/components/handling-events/#toc_event-names).  Perhaps you have some custom CSS animations trigger when the component is rendered and you want to handle some cleanup when it ends?
+
+```components/my-component.js
+didInsertElement() {
+  this._super(...arguments);
+  this.$().on('animationend', () => {
+    $(this).removeClass('.sliding-anim');
+  });
+}
+```
+
+There are a few things to note about the `didInsertElement()` hook:
+
+- It is only triggered once when the component if first invoked and the element is rendered. For logic that needs to trigger on a re-render, consider using `didRender()`
+- In the case of a parent component rendering child components, the parent will wait until the child components bubble up their respective `didInsertElement()` events before triggering it's own.
+- Setting component properties with `set()` during `didInsertElement()` has historically led to poor rendering performance and has been deprecated in recent versions of Ember.
+- While `didInsertElement()` is technically an event that can be listened for using `on('didInsertElement')`, it is strongly encouraged to override the default method itself, particularly when order of execution is important.
 
 ## willDestroyElement()
 
