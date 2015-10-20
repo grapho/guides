@@ -17,7 +17,7 @@ didInsertElement() {
 }
 ```
 
-`didInsertElement()` is also a place to bind event listeners.  this is particialrly useful for custom events or other browser events which do not have a built-in [event handler](http://guides.emberjs.com/v2.1.0/components/handling-events/#toc_event-names).  Perhaps you have some custom CSS animations trigger when the component is rendered and you want to handle some cleanup when it ends?
+`didInsertElement()` is also a place to bind event listeners.  this is particialrly useful for custom events or other browser events which do not have a [built-in event handler](http://guides.emberjs.com/v2.1.0/components/handling-events/#toc_event-names).  Perhaps you have some custom CSS animations trigger when the component is rendered and you want to handle some cleanup when it ends?
 
 ```components/my-component.js
 didInsertElement() {
