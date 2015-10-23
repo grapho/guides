@@ -61,6 +61,13 @@ var yehuda = Soldier.create({
 
 yehuda.say('Yes'); // alerts "Yehuda Katz says: Yes, sir!"
 ```
+In certain cases, you will want to pass arguments to `_super()` before or after overriding, so that the original method can continue operating as it normally would.  One common example is when overriding the `setupController()` hook in a route.  A handy shortcut for this is to use a "spread operator", like `...arguments`:
+```javascript
+setupController(controller, model)  {
+  this._super(...arguments);
+  controller.set('myBikeshed', 'Blue');
+}
+```
 
 ### Creating Instances
 
