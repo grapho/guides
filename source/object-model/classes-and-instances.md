@@ -2,7 +2,7 @@ As you learn about Ember, you'll see code like `Ember.Component.extend()` and
 `DS.Model.extend()`. Here, you'll learn about this `extend()` method, as well
 as other major features of the Ember object model.
 
-### Defining Classes and Subclasses
+### Defining Classes
 
 To define a new Ember _class_, call the [`extend()`][1] method on
 [`Ember.Object`][2]:
@@ -32,9 +32,6 @@ export default Ember.Component.extend({
   isUrgent: true
 });
 ```
-
-#### Overriding Methods in a Subclass
-
 When defining a subclass, you can override methods but still access the
 implementation of your parent class by calling the special `_super()`
 method:
@@ -60,13 +57,6 @@ var yehuda = Soldier.create({
 });
 
 yehuda.say('Yes'); // alerts "Yehuda Katz says: Yes, sir!"
-```
-In certain cases, you will want to pass arguments to `_super()` before or after overriding, so that the original method can continue operating as it normally would.  One common example is when overriding the `setupController()` hook in a route.  A handy shortcut for this is to use a "spread operator", like `...arguments`:
-```javascript
-setupController(controller, model)  {
-  this._super(...arguments);
-  controller.set('myBikeshed', 'Blue');
-}
 ```
 
 ### Creating Instances
@@ -139,8 +129,6 @@ If you are subclassing a framework class, like `Ember.Component`, and you
 override the `init()` method, make sure you call `this._super(...arguments)`!
 If you don't, a parent class may not have an opportunity to do important
 setup work, and you'll see strange behavior in your application.
-
-_Note: Arrays and objects defined directly on any Ember.Object are shared across all instances of that object. It is encouraged to initialize arrays and object properties during init() if they are meant to be unique to each instance._
 
 ### Accessing Object Properties
 
