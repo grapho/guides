@@ -37,7 +37,7 @@ didInsertElement() {
 
 ## Detaching and Tearing Down Component Elements
 
-When a component detects that it is time to remove itself from the DOM, [`willDestroyElement`](http://emberjs.com/api/classes/Ember.Component.html#event_willDestroyElement) will trigger, allowing for any teardown logic to be performed.  This can be triggered by number of conditions, for instance, a wrapping `{{if` block closing `{{#if falseBool}}{{my-component}}{{/if}}`, or a parent template being torn down in response to a route transition.
+When a component detects that it is time to remove itself from the DOM, [`willDestroyElement`](http://emberjs.com/api/classes/Ember.Component.html#event_willDestroyElement) will trigger, allowing for any teardown logic to be performed.  This can be triggered by number of conditions, for instance, a conditional htmlbars block closing `{{#if falseBool}}{{my-component}}{{/if}}`, or a parent template being torn down in response to a route transition.
 
 Let's use that hook to cleanup our date picker and event listener from above:
 
