@@ -13,7 +13,7 @@ So let's initialize our date picker by overriding the [`didInsertElement()`](htt
 ```components/my-component.js
 didInsertElement() {
   this._super(...arguments);
-  this.$('input').myDatepickerLib();
+  this.$('input.date').myDatepickerLib();
 }
 ```
 
@@ -44,7 +44,7 @@ Let's use that hook to cleanup our date picker and event listener from above:
 ```components/my-component.js
 willDestroyElement() {
   this.$().off('animationend');
-  this.$().myDatepickerLib().destroy();
+  this.$('input.date').myDatepickerLib().destroy();
 }
 ```
 There is no default implementation for `willDestroyElement` so `_super` is not necessary.
